@@ -8,7 +8,7 @@ import 'package:mentalhealth/utils/Resposive.dart';
 
 class Splash_Screen extends StatefulWidget {
   const Splash_Screen({Key? key}) : super(key: key);
-
+//
   @override
   _Splash_ScreenState createState() => _Splash_ScreenState();
 }
@@ -45,7 +45,7 @@ class _Splash_ScreenState extends State<Splash_Screen> {
               child: Image.asset("assets/img.png",fit: BoxFit.fill,),
             ),
             SizedBox(height: 4*AppSizeConfig.heightMultiplier!,),
-            Text("Mental Health Traker",style: GoogleFonts.openSans(fontWeight: FontWeight.bold, color:Colors.indigo, fontSize: 3.1*AppSizeConfig.textMultiplier!),)
+            Text("Mental Health Tracker",style: GoogleFonts.openSans(fontWeight: FontWeight.bold, color:Colors.indigo, fontSize: 3.1*AppSizeConfig.textMultiplier!),)
 
 
 

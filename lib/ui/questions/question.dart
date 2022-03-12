@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mentalhealth/ui/loginui/login.dart';
 import 'package:mentalhealth/utils/Resposive.dart';
+import 'package:mentalhealth/widgets/preload.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class landingpage extends StatefulWidget {
   const landingpage({Key? key}) : super(key: key);
@@ -14,6 +17,25 @@ class _landingpageState extends State<landingpage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backwardsCompatibility: false,
+        elevation: 2,
+        backgroundColor: Colors.white,
+        centerTitle: true,
+        title:const Text("Mental Health", style: TextStyle(color: Colors.indigo),),
+
+        actions: [
+          IconButton(onPressed: () async{
+            final prefs = await SharedPreferences.getInstance();
+            prefs.remove('uid');
+            showMyDialog(context);
+            Navigator.push(context, MaterialPageRoute(builder: (_)=>Login_Page()));
+          }, icon:Icon( Icons.logout, color: Colors.black,))
+        ],
+
+
+
+      ),
       backgroundColor: Colors.indigo,
       body: Column(
         children: [
@@ -21,7 +43,7 @@ class _landingpageState extends State<landingpage> {
       Center(
         child: Container(
         height: 9*AppSizeConfig.heightMultiplier!,
-          width: 96*AppSizeConfig.widthMultiplier!,
+          width: 90*AppSizeConfig.widthMultiplier!,
           decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(9)
