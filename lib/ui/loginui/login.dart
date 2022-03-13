@@ -31,7 +31,7 @@ class _Login_PageState extends State<Login_Page> {
           child: Column(
             children: [
               SizedBox(height: 13*AppSizeConfig.heightMultiplier!,),
-              Text("Wellcome  Back !!!",style: GoogleFonts.openSans(fontWeight: FontWeight.bold, color:Colors.deepPurple, fontSize: 3.1*AppSizeConfig.textMultiplier!),),
+              Text("Welcome  Back !!!",style: GoogleFonts.openSans(fontWeight: FontWeight.bold, color:Colors.deepPurple, fontSize: 3.1*AppSizeConfig.textMultiplier!),),
               SizedBox(height: 2*AppSizeConfig.heightMultiplier!,),
               Center(
                 child: Container(

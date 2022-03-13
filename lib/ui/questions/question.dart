@@ -14,6 +14,51 @@ class landingpage extends StatefulWidget {
 
 class _landingpageState extends State<landingpage> {
   String groupvalue ="";
+int indexs=0;
+   List<Map<dynamic, dynamic>> question = [
+    {
+      'question':'How Happy do you feel today',
+      'answer':'',
+      'otions':[
+        '40%',
+        '50%',
+        '80%',
+        '20%',
+      ]
+    },
+    {
+      'question':'How many people did you meet today?',
+      'answer':'',
+      'otions':[
+        '4',
+        '5',
+        '8',
+        '2',
+      ]
+    },
+    {
+      'question':'How productive do you feel today?',
+      'answer':'',
+      'otions':[
+        'Movies',
+        'Sports',
+        'Yoga',
+        'work',
+      ]
+    },
+     {
+       'question':'end',
+       'answer':'',
+       'otions':[
+       ]
+
+     }
+
+
+
+  ];
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,7 +94,7 @@ class _landingpageState extends State<landingpage> {
               borderRadius: BorderRadius.circular(9)
 
           ),
-          child:  Center(child: Text("Question 1",style: GoogleFonts.roboto(fontWeight: FontWeight.bold, color:Colors.red, fontSize: 2.1*AppSizeConfig.textMultiplier!),)),
+          child:  Center(child: Text(question[indexs]['question'].toString(),style: GoogleFonts.roboto(fontWeight: FontWeight.bold, color:Colors.red, fontSize: 2.1*AppSizeConfig.textMultiplier!),)),
         ),
       ),
           SizedBox(height: 7*AppSizeConfig.heightMultiplier!,),
@@ -64,10 +109,15 @@ class _landingpageState extends State<landingpage> {
         ),
         child: Column(
           children: [
-            options(" option 1"),
-            options(" option 2"),
-            options(" option 3"),
-            options(" option 4")
+            Expanded(
+              child: ListView.builder(
+              itemCount:question[indexs]['otions'].length,
+              itemBuilder: (context, index){
+               return options(question[indexs]['otions'][index]);
+              }),
+            ),
+
+           
 
         ],
         )
@@ -84,10 +134,15 @@ class _landingpageState extends State<landingpage> {
         value: o,
         groupValue:groupvalue,
         onChanged: (value) {
-          setState(() {
-groupvalue=value.toString();
-          });
-        },
+          if (indexs<question.length) {
+            setState(() {
+              groupvalue = value.toString();
+
+              indexs = indexs + 1;
+            });
+          }
+
+        }
       ),
       title:Text(o,style: GoogleFonts.roboto(fontWeight: FontWeight.bold, color:Colors.indigo, fontSize: 2.1*AppSizeConfig.textMultiplier!)
     ),

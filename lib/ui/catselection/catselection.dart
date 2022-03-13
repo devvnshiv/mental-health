@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mentalhealth/ui/moviequestion.dart';
 import 'package:mentalhealth/ui/questions/question.dart';
 import 'package:mentalhealth/utils/Resposive.dart';
 
@@ -41,7 +42,12 @@ class _CatSelectionState extends State<CatSelection> {
           SizedBox(height: 6*AppSizeConfig.heightMultiplier!,),
           choice("Yoga"),
           SizedBox(height: 6*AppSizeConfig.heightMultiplier!,),
-          choice("Movies"),
+          GestureDetector(
+              onTap: (){
+                //Mocielanding
+                Navigator.push(context, MaterialPageRoute(builder: (_)=>Mocielanding ()));
+              },
+              child: choice("Movies")),
           SizedBox(height: 6*AppSizeConfig.heightMultiplier!,),
           choice("sports"),
           SizedBox(height: 6*AppSizeConfig.heightMultiplier!,),
@@ -57,7 +63,7 @@ class _CatSelectionState extends State<CatSelection> {
 
     );
   }
-   choice (String text){
+ Widget  choice (String text){
     return   Container(
       height: 6*AppSizeConfig.heightMultiplier!,
       width: 75*AppSizeConfig.widthMultiplier!,

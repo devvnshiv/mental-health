@@ -2,6 +2,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mentalhealth/data/userrepo.dart';
+import 'package:mentalhealth/ui/catselection/catselection.dart';
 import 'package:mentalhealth/ui/questions/question.dart';
 import 'package:mentalhealth/widgets/alertdilog.dart';
 
@@ -40,7 +41,7 @@ if(error!=null){
   }else {
     await prefs.setString('uid', res.user!.id);
 
-    Navigator.push(context, MaterialPageRoute(builder: (_)=>landingpage()));
+    Navigator.push(context, MaterialPageRoute(builder: (_)=>CatSelection()));
   }
   }
 

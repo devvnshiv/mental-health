@@ -2,6 +2,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mentalhealth/ui/catselection/catselection.dart';
+import 'package:mentalhealth/ui/loginui/login.dart';
 import 'package:mentalhealth/ui/questions/question.dart';
 import 'package:mentalhealth/widgets/alertdilog.dart';
 import 'package:mentalhealth/widgets/messagealert.dart';
@@ -26,7 +27,7 @@ class Userdata{
 
       MsgAlert(context ,"Alert" , "SignUp SuccessFully");
       Future.delayed(Duration(seconds: 2),(){
-      Navigator.push(context, MaterialPageRoute(builder: (_)=>CatSelection()));
+      Navigator.push(context, MaterialPageRoute(builder: (_)=>Login_Page()));
 
 
       });}
