@@ -16,9 +16,9 @@ class Userdata{
 
   SetUser( String name, String email, BuildContext  context, String uid, String number) async{
     final res = await Supabase.instance.client
-        .from('Users')
+        .from('user')
         .insert([
-      {'name': name, 'email':email, 'uid':uid, 'number':number}
+      {'name': name, 'email':email, 'uid':uid, }
     ]).execute();
     if(res.hasError){
 

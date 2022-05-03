@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mentalhealth/ui/loginui/login.dart';
+import 'package:mentalhealth/ui/result/result.dart';
 import 'package:mentalhealth/utils/Resposive.dart';
 import 'package:mentalhealth/widgets/preload.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class landingpage extends StatefulWidget {
-  const landingpage({Key? key}) : super(key: key);
+  final question;
+  final answer;
+
+
+  const landingpage({Key? key, this.answer, this.question}) : super(key: key);
 
   @override
   _landingpageState createState() => _landingpageState();
@@ -14,53 +19,15 @@ class landingpage extends StatefulWidget {
 
 class _landingpageState extends State<landingpage> {
   String groupvalue ="";
+
 int indexs=0;
-   List<Map<dynamic, dynamic>> question = [
-    {
-      'question':'How Happy do you feel today',
-      'answer':'',
-      'otions':[
-        '40%',
-        '50%',
-        '80%',
-        '20%',
-      ]
-    },
-    {
-      'question':'How many people did you meet today?',
-      'answer':'',
-      'otions':[
-        '4',
-        '5',
-        '8',
-        '2',
-      ]
-    },
-    {
-      'question':'How productive do you feel today?',
-      'answer':'',
-      'otions':[
-        'Movies',
-        'Sports',
-        'Yoga',
-        'work',
-      ]
-    },
-     {
-       'question':'end',
-       'answer':'',
-       'otions':[
-       ]
-
-     }
-
-
-
-  ];
 
 
   @override
   Widget build(BuildContext context) {
+    if(indexs==5){
+      Navigator.push(context, MaterialPageRoute(builder: (_)=>Result()));
+    }
     return Scaffold(
       appBar: AppBar(
         backwardsCompatibility: false,
@@ -94,7 +61,7 @@ int indexs=0;
               borderRadius: BorderRadius.circular(9)
 
           ),
-          child:  Center(child: Text(question[indexs]['question'].toString(),style: GoogleFonts.roboto(fontWeight: FontWeight.bold, color:Colors.red, fontSize: 2.1*AppSizeConfig.textMultiplier!),)),
+          child:  Center(child: Text(widget.question[indexs]['question'].toString(),style: GoogleFonts.roboto(fontWeight: FontWeight.bold, color:Colors.red, fontSize: 2.1*AppSizeConfig.textMultiplier!),)),
         ),
       ),
           SizedBox(height: 7*AppSizeConfig.heightMultiplier!,),
@@ -105,19 +72,113 @@ int indexs=0;
             color: Colors.white,
             borderRadius: BorderRadius.circular(9)
 
-
+//question[indexs]['otions'][index]
         ),
         child: Column(
           children: [
-            Expanded(
-              child: ListView.builder(
-              itemCount:question[indexs]['otions'].length,
-              itemBuilder: (context, index){
-               return options(question[indexs]['otions'][index]);
-              }),
-            ),
+        ListTile(
+        leading: Radio(
+            value:widget.question[indexs]['otions'][0].toString(),
+            groupValue:widget.answer[indexs],
+            onChanged: (value)async {
+              if (indexs<widget.question.length) {
+                setState(() {
+                widget . answer[indexs]=value.toString();
 
-           
+                });
+                await  Future.delayed(Duration(seconds: 2),(){
+                  setState(() {
+                    indexs = indexs + 1;
+                  });
+                });
+
+                print(widget.answer);
+              }
+
+            }
+        ),
+        title:Text(widget.question[indexs]['otions'][0],style: GoogleFonts.roboto(fontWeight: FontWeight.bold, color:Colors.indigo, fontSize: 2.1*AppSizeConfig.textMultiplier!)
+        ),
+
+      ),
+
+            ListTile(
+              leading: Radio(
+                  value:widget.question[indexs]['otions'][1].toString(),
+                  groupValue:widget.answer[indexs],
+                  onChanged: (value)async {
+                    if (indexs<widget.question.length) {
+                      setState(() {
+                      widget.  answer[indexs]=value.toString();
+
+                      });
+                      await  Future.delayed(Duration(seconds: 2),(){
+                        setState(() {
+                          indexs = indexs + 1;
+                        });
+                      });
+
+                      print(widget.answer);
+                    }
+
+                  }
+              ),
+              title:Text(widget.question[indexs]['otions'][1],style: GoogleFonts.roboto(fontWeight: FontWeight.bold, color:Colors.indigo, fontSize: 2.1*AppSizeConfig.textMultiplier!)
+              ),
+
+            ),
+            widget.question[indexs]['otions'].length> 2?   ListTile(
+                 leading: Radio(
+                  value:widget.question[indexs]['otions'][2].toString(),
+                  groupValue:widget.answer[indexs],
+                  onChanged: (value)async {
+                    if (indexs<widget.question.length) {
+                      setState(() {
+                       widget. answer[indexs]=value.toString();
+
+                      });
+                      await  Future.delayed(Duration(seconds: 2),(){
+                        setState(() {
+                          indexs = indexs + 1;
+                        });
+                      });
+
+                      print(widget.answer);
+                    }
+
+                  }
+              ),
+              title:Text(widget.question[indexs]['otions'][2],style: GoogleFonts.roboto(fontWeight: FontWeight.bold, color:Colors.indigo, fontSize: 2.1*AppSizeConfig.textMultiplier!)
+              ),
+
+            )
+            :Container(),
+            widget.question[indexs]['otions'].length> 2?    ListTile(
+              leading: Radio(
+                  value:widget.question[indexs]['otions'][3].toString(),
+                  groupValue:widget.answer[indexs],
+                  onChanged: (value)async {
+                    if (indexs<widget.question.length) {
+                      setState(() {
+                      widget.  answer[indexs]=value.toString();
+
+                      });
+                      await  Future.delayed(Duration(seconds: 2),(){
+                        setState(() {
+                          indexs = indexs + 1;
+                        });
+                      });
+
+                      print(widget.answer);
+                    }
+
+                  }
+              ),
+              title:Text(widget.question[indexs]['otions'][3],style: GoogleFonts.roboto(fontWeight: FontWeight.bold, color:Colors.indigo, fontSize: 2.1*AppSizeConfig.textMultiplier!)
+              ),
+
+            ): Container(),
+
 
         ],
         )
@@ -128,28 +189,9 @@ int indexs=0;
     );
   }
 
-  options( String o){
-    return   ListTile(
-      leading: Radio(
-        value: o,
-        groupValue:groupvalue,
-        onChanged: (value) {
-          if (indexs<question.length) {
-            setState(() {
-              groupvalue = value.toString();
 
-              indexs = indexs + 1;
-            });
-          }
 
-        }
-      ),
-      title:Text(o,style: GoogleFonts.roboto(fontWeight: FontWeight.bold, color:Colors.indigo, fontSize: 2.1*AppSizeConfig.textMultiplier!)
-    ),
 
-    );
-
-  }
 
 
 

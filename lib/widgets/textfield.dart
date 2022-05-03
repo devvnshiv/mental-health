@@ -10,17 +10,19 @@ class TextFields extends StatelessWidget {
   final bool?   ofsure;
   final TextEditingController? controller;
   final IconData? icon;
+  final int? vadidation;
 
-  const TextFields({Key? key, this.hint, this.ofsure, this.controller, this.icon}) : super(key: key);
+  const TextFields({Key? key, this.hint, this.ofsure, this.controller, this.icon, this.vadidation}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
 
+
       child: TextFormField(
 obscureText: ofsure!,
         validator: ValidationBuilder()
-            .minLength(1)
+            .minLength(vadidation!)
             .build(),
         controller: controller!,
 

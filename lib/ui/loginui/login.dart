@@ -17,6 +17,7 @@ class Login_Page extends StatefulWidget {
 
 class _Login_PageState extends State<Login_Page> {
   GlobalKey<FormState> key = GlobalKey();
+ bool isVisiable = true;
 
   TextEditingController email =TextEditingController();
   TextEditingController password =  TextEditingController();
@@ -28,37 +29,62 @@ class _Login_PageState extends State<Login_Page> {
       body: SingleChildScrollView(
         child: Form(
           key: key,
-          child: Column(
-            children: [
-              SizedBox(height: 13*AppSizeConfig.heightMultiplier!,),
-              Text("Welcome  Back !!!",style: GoogleFonts.openSans(fontWeight: FontWeight.bold, color:Colors.deepPurple, fontSize: 3.1*AppSizeConfig.textMultiplier!),),
-              SizedBox(height: 2*AppSizeConfig.heightMultiplier!,),
-              Center(
-                child: Container(
-                  height: 50*AppSizeConfig.heightMultiplier!,
-                  width: 85*AppSizeConfig.widthMultiplier!,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: Colors.white
-                  ),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: [
+                SizedBox(height: 13*AppSizeConfig.heightMultiplier!,),
+                Text("Welcome  Back !!!",style: GoogleFonts.openSans(fontWeight: FontWeight.bold, color:Colors.deepPurple, fontSize: 3.1*AppSizeConfig.textMultiplier!),),
+                SizedBox(height: 2*AppSizeConfig.heightMultiplier!,),
+                Center(
+                  child: Container(
+                    height: 50*AppSizeConfig.heightMultiplier!,
+width:90*AppSizeConfig.widthMultiplier!,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.white
+                    ),
 child: Column(
   children: [
     Text("Login",style: GoogleFonts.openSans(fontWeight: FontWeight.bold, color:Colors.red, fontSize: 3.5*AppSizeConfig.textMultiplier!),),
     SizedBox(height: 4*AppSizeConfig.heightMultiplier!,),
-    TextFields( hint:"Email Id",ofsure:false,controller: email,icon: Icons.email ),
-    SizedBox(height: 4*AppSizeConfig.heightMultiplier!,),
-    TextFields( hint:"password",ofsure:true,controller: password,icon: Icons.password ),
+    TextFields( hint:"Email Id",ofsure:false,controller: email,icon: Icons.email, vadidation: 1, ),
     SizedBox(height: 4*AppSizeConfig.heightMultiplier!,),
     Row(
       children: [
-          SizedBox(width: 4*AppSizeConfig.widthMultiplier!,),
-          GestureDetector(
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (_)=>Signup()));
-              },
+        Container(
+            width:78*AppSizeConfig.widthMultiplier!,
+
+            child: TextFields( hint:"password",ofsure: isVisiable,controller: password,icon: Icons.password, vadidation: 1, )),
+        IconButton(onPressed: (){
+            if(isVisiable){
+              setState(() {
+                isVisiable= false;
+              });
+            } else {
+              setState(() {
+                isVisiable= true;
+              });
+            }
 
 
-              child: Text("yet to Register? Signup",style: GoogleFonts.openSans(fontWeight: FontWeight.bold, color:Colors.indigo, fontSize: 1.4*AppSizeConfig.textMultiplier!),)),
+
+        }, icon:isVisiable? Icon(Icons.visibility_outlined):Icon(Icons.visibility_off_outlined))
+
+
+      ],
+    ),
+    SizedBox(height: 4*AppSizeConfig.heightMultiplier!,),
+    Row(
+      children: [
+            SizedBox(width: 4*AppSizeConfig.widthMultiplier!,),
+            GestureDetector(
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (_)=>Signup()));
+                },
+
+
+                child: Text("yet to Register? Signup",style: GoogleFonts.openSans(fontWeight: FontWeight.bold, color:Colors.indigo, fontSize: 1.4*AppSizeConfig.textMultiplier!),)),
       ],
     ),
     SizedBox(height: 2*AppSizeConfig.heightMultiplier!,),
@@ -67,9 +93,10 @@ child: Column(
   ],
 ),
 
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

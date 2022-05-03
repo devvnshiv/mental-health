@@ -21,6 +21,7 @@ class _SignupState extends State<Signup> {
   TextEditingController password =  TextEditingController();
   TextEditingController name= TextEditingController();
   TextEditingController number= TextEditingController();
+  bool isVisiable =true;
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
@@ -45,13 +46,42 @@ class _SignupState extends State<Signup> {
                     children: [
                       Text("Register",style: GoogleFonts.openSans(fontWeight: FontWeight.bold, color:Colors.red, fontSize: 3.5*AppSizeConfig.textMultiplier!),),
                       SizedBox(height: 4*AppSizeConfig.heightMultiplier!,),
-                      TextFields( hint:"  Email Id",ofsure:false,controller: email,icon: Icons.email ),
+                      TextFields( hint:"  Email Id",ofsure:false,controller: email,icon: Icons.email , vadidation: 1,),
                       SizedBox(height: 4*AppSizeConfig.heightMultiplier!,),
-                      TextFields( hint:" name",ofsure:false,controller: name,icon: Icons.supervised_user_circle_outlined ),
+                      TextFields( hint:" name",ofsure:false,controller: name,icon: Icons.supervised_user_circle_outlined, vadidation: 1, ),
                       SizedBox(height: 4*AppSizeConfig.heightMultiplier!,),
-                      TextFields( hint:"contact number",ofsure:false,controller: number,icon: Icons.mobile_friendly ),
+                      TextFields( hint:"contact number",ofsure:false,controller: number,icon: Icons.contact_phone_outlined, vadidation: 10,),
                       SizedBox(height: 4*AppSizeConfig.heightMultiplier!,),
-                      TextFields( hint:"password",ofsure:true,controller: password,icon: Icons.password ),
+                      Row(
+                        children: [
+                          Container(
+                              width:75*AppSizeConfig.widthMultiplier!,
+
+                              child:
+                                  TextFields( hint:"password",ofsure: isVisiable,controller: password,icon: Icons.password, vadidation: 1, ),
+
+
+
+
+                              ),
+                          IconButton(onPressed: (){
+                            if(isVisiable){
+                              setState(() {
+                                isVisiable= false;
+                              });
+                            } else {
+                              setState(() {
+                                isVisiable= true;
+                              });
+                            }
+
+
+
+                          }, icon:isVisiable? Icon(Icons.visibility_outlined):Icon(Icons.visibility_off_outlined)),
+
+                        ],
+                      ),
+
                       SizedBox(height: 4*AppSizeConfig.heightMultiplier!,),
                       Row(
                         children: [

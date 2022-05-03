@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mentalhealth/ui/catselection/catselection.dart';
+import 'package:mentalhealth/ui/questions/question.dart';
+import 'package:mentalhealth/ui/result/result.dart';
 import 'package:mentalhealth/ui/splashscreen/splashscreen.dart';
 import 'package:mentalhealth/utils/Resposive.dart';
 import 'package:mentalhealth/widgets/splash.dart';
@@ -6,7 +9,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async{
 
-  var a = await Supabase.initialize(url: 'https://kstextimtraawposssjl.supabase.co', anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtzdGV4dGltdHJhYXdwb3Nzc2psIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NDcwNDIyNjAsImV4cCI6MTk2MjYxODI2MH0.uWcM4bNyBUdzder8fQ14kqhl_btbGfVLFa8xROYCrQk');
+  var a = await Supabase.initialize(url: 'https://iizqjdmitvkchwaiqlix.supabase.co', anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlpenFqZG1pdHZrY2h3YWlxbGl4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NTEzODU3NTIsImV4cCI6MTk2Njk2MTc1Mn0.IyFBWjHXVq2OH8jggtLi1Oy7AAlxVASbCiALL3NfLo0');
 
   runApp(const MyApp());
 }

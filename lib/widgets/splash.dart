@@ -1,6 +1,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mentalhealth/ui/catselection/catselection.dart';
 import 'package:mentalhealth/ui/loginui/login.dart';
 import 'package:mentalhealth/ui/questions/question.dart';
 import 'package:mentalhealth/utils/Resposive.dart';
@@ -35,7 +36,7 @@ class _SplashScreenState extends State<SplashScreen> {
         Navigator.push(context, MaterialPageRoute(builder: (_)=>Login_Page()));
 
       }else {
-        Navigator.push(context, MaterialPageRoute(builder: (_)=>landingpage ()));
+        Navigator.push(context, MaterialPageRoute(builder: (_)=>CatSelection ()));
       }
 
     });
@@ -67,7 +68,7 @@ SizedBox(height: 20,),
                   child: Container(
                     height:200,
                     width: 200,
-                    child: Image.asset("assets/img.png",fit:BoxFit.cover,),
+                    child: Image.asset("assets/img_1.png",fit:BoxFit.cover,),
                   ),
                 ),
                 SizedBox(height: 20,),
